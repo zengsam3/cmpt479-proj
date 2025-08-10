@@ -234,7 +234,7 @@ TestNo,MutantNo
 --- org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
 ```
 
-### testMap.csv (Optional)
+### testMap.csv
 ```
 TestNo,TestName
 1,org.apache.commons.math3.exception.util.ArgUtilsTest
