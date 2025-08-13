@@ -25,19 +25,19 @@ pip install -r requirements.txt
 ### Basic Usage
 
 ```bash
-python main.py --mutation-dir /path/to/mutation/output --method muse --top-k 10
+python3 main.py --mutation-dir /path/to/mutation/output --method muse --top-k 10
 ```
 
 ### With Source Code Context
 
 ```bash
-python main.py --mutation-dir /path/to/mutation/output --source-dir /path/to/source/code --method muse --top-k 5
+python3 main.py --mutation-dir /path/to/mutation/output --source-dir /path/to/source/code --method muse --top-k 5
 ```
 
 ### Export Results to JSON
 
 ```bash
-python main.py --mutation-dir /path/to/mutation/output --method metallaxis --output results.json
+python3 main.py --mutation-dir /path/to/mutation/output --method metallaxis --output results.json
 ```
 
 ## Command Line Options
@@ -146,24 +146,24 @@ mbfl-tool/
 
 ### Example 1: Basic Fault Localization
 ```bash
-python main.py --mutation-dir ./defects4j_output --method muse --top-k 5
+python3 main.py --mutation-dir ./defects4j_output --method muse --top-k 5
 ```
 
 ### Example 2: With Source Code Context
 ```bash
-python main.py --mutation-dir ./defects4j_output --source-dir ./project/src/main/java --method muse
+python3 main.py --mutation-dir ./defects4j_output --source-dir ./project/src/main/java --method muse
 ```
 
 ### Example 3: Compare Different Methods
 ```bash
 # Run MUSE
-python main.py --mutation-dir ./defects4j_output --method muse --output muse_results.json
+python3 main.py --mutation-dir ./defects4j_output --method muse --output muse_results.json
 
 # Run Metallaxis  
-python main.py --mutation-dir ./defects4j_output --method metallaxis --output metallaxis_results.json
+python3 main.py --mutation-dir ./defects4j_output --method metallaxis --output metallaxis_results.json
 
 # Run DStar
-python main.py --mutation-dir ./defects4j_output --method dstar --output dstar_results.json
+python3 main.py --mutation-dir ./defects4j_output --method dstar --output dstar_results.json
 ```
 
 ## Interpreting Results
@@ -234,7 +234,7 @@ TestNo,MutantNo
 --- org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
 ```
 
-### testMap.csv
+### testMap.csv (Optional)
 ```
 TestNo,TestName
 1,org.apache.commons.math3.exception.util.ArgUtilsTest
