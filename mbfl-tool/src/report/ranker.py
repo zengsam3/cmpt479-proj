@@ -2,7 +2,7 @@
 Ranking logic for suspicious locations in MBFL analysis
 """
 
-from typing import List
+from typing import Dict, List
 from ..core.model import SuspiciousnessScore
 
 
