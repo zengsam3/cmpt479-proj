@@ -1,0 +1,43 @@
+ python3 main.py --mutation-dir /tmp/math_1_buggy --method muse --top-k 5
+Parsing mutation data...
+Parsed 844 mutant statuses from kill.csv
+Sample statuses: ['FAIL', 'FAIL', 'FAIL', 'FAIL', 'FAIL']
+Status distribution: {'FAIL': 192, 'LIVE': 244, 'EXC': 193, 'TIME': 17, 'UNCOV': 198}
+Parsed coverage for 646 mutants from covMap.csv
+Sample: Mutant 387 covered by tests ['190', '198', '196']
+Parsed 383 test mappings from testMap.csv
+Sample mappings: [('1', 'org.apache.commons.math3.exception.util.ArgUtilsTest'), ('2', 'org.apache.commons.math3.genetics.FixedGenerationCountTest'), ('3', 'org.apache.commons.math3.ml.distance.CanberraDistanceTest')]
+Found 844 mutants
+Found 2 failing tests
+Coverage data for 646 mutants
+Test ID mapping for 383 tests
+Failing test names: ['org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor', 'org.apache.commons.math3.fraction.BigFractionTest::testDigitLimitConstructor']...
+Calculating suspiciousness using muse...
+
+DEBUG: Checking test name matching...
+Failing tests: ['org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor', 'org.apache.commons.math3.fraction.BigFractionTest::testDigitLimitConstructor']
+Found 5 test IDs for failing tests: ['196', '103', '179', '107', '8']
+Potential matches found:
+  8: org.apache.commons.math3.util.ContinuedFractionTest -> org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
+  103: org.apache.commons.math3.fraction.FractionFieldTest -> org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
+  107: org.apache.commons.math3.fraction.BigFractionFieldTest -> org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
+  179: org.apache.commons.math3.fraction.BigFractionFormatTest -> org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
+  196: org.apache.commons.math3.fraction.FractionFormatTest -> org.apache.commons.math3.fraction.FractionTest::testDigitLimitConstructor
+Mutants covered by failing tests: 356
+DEBUG org.apache.commons.math3.fraction.BigFraction:45 - f2p:2, f2f:0, p2p:0, p2f:7, score:0.25
+DEBUG org.apache.commons.math3.fraction.BigFraction:48 - f2p:2, f2f:0, p2p:0, p2f:7, score:0.25
+DEBUG org.apache.commons.math3.fraction.BigFraction:51 - f2p:2, f2f:0, p2p:0, p2f:7, score:0.25
+
+=== MBFL Analysis Results (MUSE) ===
+Total suspicious locations: 226
+Total mutants: 844
+Failing tests: 2
+Mutant status distribution: {'FAIL': 192, 'LIVE': 244, 'EXC': 193, 'TIME': 17, 'UNCOV': 198}
+
+Top 5 Suspicious Locations:
+--------------------------------------------------------------------------------
+# 1: BigFraction@<init>(double):193 (score: 0.5000, mutants: 22)
+# 2: BigFraction@<init>(double):192 (score: 0.5000, mutants: 10)
+# 3: BigFraction@<init>(double):185 (score: 0.5000, mutants: 5)
+# 4: BigFraction@<init>(double):189 (score: 0.5000, mutants: 5)
+# 5: BigFraction@<init>(double):194 (score: 0.5000, mutants: 5)
