@@ -97,7 +97,7 @@ The debug output shows four categories of test-mutant interactions:
 - **p2p**: **P**assing test → **P**ass (mutant survives) - *Neutral*
 - **p2f**: **P**assing test → **F**ail (mutant killed) - *Reduces suspiciousness*
 
-### Sample Output
+### Sample Output (A sample output is in the sample_data folder)
 
 ```
 === MBFL Analysis Results (MUSE) ===
@@ -207,7 +207,7 @@ For detailed debugging information, run without `--quiet` flag to see:
 - Sample f2p, f2f, p2p, p2f calculations
 - Coverage statistics
 
-## File Format Requirements
+## File Format Requirements (Sample files in sample_data folder)
 
 ### mutants.log
 ```
