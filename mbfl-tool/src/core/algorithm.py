@@ -207,7 +207,6 @@ class MBFLCalculator:
         for mutant_id in mutant_ids:
             covering_test_ids.update(coverage_map.get(mutant_id, set()))
 
-        # Debug: Check if we have any covering tests
         if not covering_test_ids:
             return f2p, f2f, p2p, p2f
 
@@ -215,8 +214,6 @@ class MBFLCalculator:
             # If testMap exists, use it to get test name; otherwise use test_id directly
             test_name = test_id_to_name.get(test_id, test_id)
 
-            # Check if this test is failing with flexible matching
-            is_failing_test = self._is_failing_test(test_name, test_id, failing_tests)
 
             # Check if any mutant at this location is killed by this test
             mutant_killed = False
@@ -227,6 +224,7 @@ class MBFLCalculator:
                     break
 
             # Categorize based on test result and mutant kill status
+            is_failing_test = self._is_failing_test(test_name, test_id, failing_tests)
             if is_failing_test and mutant_killed:
                 f2p += 1
             elif is_failing_test and not mutant_killed:

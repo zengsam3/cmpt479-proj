@@ -18,16 +18,12 @@ def _get_test_categories(mutant_ids: List[str], mutant_status: Dict[str, str],
     for mutant_id in mutant_ids:
         covering_test_ids.update(coverage_map.get(mutant_id, set()))
 
-    # Debug: Check if we have any covering tests
     if not covering_test_ids:
         return f2p, f2f, p2p, p2f
 
     for test_id in covering_test_ids:
         # If testMap exists, use it to get test name; otherwise use test_id directly
         test_name = test_id_to_name.get(test_id, test_id)
-
-        # Check if this test is failing with flexible matching
-        is_failing_test = _is_failing_test(test_name, test_id, failing_tests)
 
         # Check if any mutant at this location is killed by this test
         mutant_killed = False
@@ -38,6 +34,7 @@ def _get_test_categories(mutant_ids: List[str], mutant_status: Dict[str, str],
                 break
 
         # Categorize based on test result and mutant kill status
+        is_failing_test = _is_failing_test(test_name, test_id, failing_tests)
         if is_failing_test and mutant_killed:
             f2p += 1
         elif is_failing_test and not mutant_killed:
@@ -98,11 +95,9 @@ def _is_test_match(test_name: str, failing_test: str) -> bool:
     test_package = '.'.join(test_name.split('.')[:-1])
 
     if failing_package == test_package:
-        # Same package - check for word overlap
         failing_words = set(failing_base.lower().split())
         test_words = set(test_base.lower().split())
 
-        # Add word splitting by camelCase
         failing_words.update(_split_camel_case(failing_base.lower()))
         test_words.update(_split_camel_case(test_base.lower()))
 
